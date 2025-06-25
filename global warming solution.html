@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Global Warming Solutions</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Inter:wght@400;600&family=Roboto+Slab:wght@700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      color: white;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    .background {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: url('https://images.unsplash.com/photo-1502082553048-f009c37129b9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80') no-repeat center center/cover;
+      z-index: -1;
+      filter: brightness(0.6);
+    }
+
+    .heading {
+      text-align: center;
+      font-size: 3rem;
+      font-family: 'Roboto Slab', serif;
+      margin: 3rem 0 2rem;
+      position: relative;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      align-items: flex-start;
+      padding: 2rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .buttons a {
+      background: #00eaff;
+      color: #000;
+      font-weight: bold;
+      padding: 1rem 2rem;
+      border-radius: 30px;
+      text-decoration: none;
+      font-size: 1.1rem;
+      font-family: 'Inter', sans-serif;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      transition: all 0.3s ease;
+      position: relative;
+      width: 100%;
+      text-align: left;
+    }
+
+    .buttons a:hover {
+      background: #39ff14;
+      color: #000;
+      transform: scale(1.05);
+    }
+
+    .view-solution-btn {
+      display: block;
+      text-align: center;
+      margin: 2rem auto;
+      background: #0066ff;
+      color: white;
+      padding: 1rem 3rem;
+      border-radius: 30px;
+      text-decoration: none;
+      font-size: 1.2rem;
+      font-weight: bold;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      transition: all 0.3s ease;
+      max-width: 300px;
+    }
+
+    .view-solution-btn:hover {
+      background: #0052cc;
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+  <div class="background"></div>
+
+  <div class="heading">
+    GLOBAL WARMING SOLUTIONS
+  </div>
+
+  <div class="buttons">
+    <a href="https://www.un.org/en/climatechange/reforestation" target="_blank">1. United Nations - Climate Action</a>
+    <a href="https://www.trilliontreecampaign.org/" target="_blank">2. Trillion Tree Campaign</a>
+    <a href="https://onetreeplanted.org/" target="_blank">3. One Tree Planted</a>
+    <a href="https://ecosia.org/" target="_blank">4. Ecosia</a>
+    <a href="https://www.globalforestwatch.org/" target="_blank">5. Global Forest Watch</a>
+  </div>
+
+  <a href="http://127.0.0.1:5500/global/global%20warming%20solution.html" class="view-solution-btn">View Solution</a>
+</body>
+</html>

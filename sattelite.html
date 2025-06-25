@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Solar System Live View</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Canvas for Solar System -->
+<canvas id="earthCanvas"></canvas>
+
+<!-- Overlay Info -->
+<div class="overlay">
+  <h1>Solar System Live Visualization</h1>
+  <p>
+    <a href="https://solarsystem.nasa.gov/solar-system/our-solar-system/overview/" target="_blank" rel="noopener noreferrer" style="color:#fff;text-decoration:underline;">NASA Solar System</a> 
+    <a href="https://eyes.nasa.gov/apps/solar-system/" target="_blank" rel="noopener noreferrer" style="color:#fff;text-decoration:underline;">3D Solar System</a>
+    <br>
+    <a href="https://eyes.nasa.gov/apps/solar-system/#/home" target="_blank" rel="noopener noreferrer" style="color:#fff;text-decoration:underline;margin-top:8px;display:inline-block;">Planetary Positions</a>
+    <br>
+    <a href="https://www.theplanetstoday.com/index.html" target="_blank" rel="noopener noreferrer" style="color:#fff;text-decoration:underline;margin-top:8px;display:inline-block;">Live Planet Positions Today</a>
+  </p>
+</div>
+
+<!-- Controls -->
+<div class="controls">
+  <button id="toggleAnimation">Toggle Animation</button>
+</div>
+
+<!-- Planet Information Modal -->
+<div id="planetInfo" class="planet-info-modal">
+  <div class="planet-info-content">
+    <span class="close-button">&times;</span>
+    <h2 id="planetInfoTitle"></h2>
+    <p id="planetInfoDescription"></p>
+    <a id="planetInfoLink" href="#" target="_blank" class="youtube-link">Watch on YouTube</a>
+  </div>
+</div>
+
+<div id="planetDetail" style="display:none;position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);background:rgba(20,20,30,0.97);color:#fff;padding:2rem 2.5rem;border-radius:18px;z-index:1000;box-shadow:0 8px 32px rgba(0,0,0,0.4);min-width:300px;max-width:90vw;max-height:80vh;overflow:auto;font-family:'Poppins',sans-serif;">
+  <button id="closePlanetDetail" style="position:absolute;top:10px;right:18px;background:none;border:none;color:#fff;font-size:1.5rem;cursor:pointer;">&times;</button>
+  <div id="planetDetailContent"></div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

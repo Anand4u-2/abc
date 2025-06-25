@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Global Warming Data</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Outfit', sans-serif; background: #f2f7f5; color: #222; }
+    
+    header {
+      background-color: #004d40;
+      color: white;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header h1 { font-size: 24px; }
+
+    nav a {
+      margin-left: 20px;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .hero {
+      background: url('https://images.unsplash.com/photo-1581092914644-f8970fa9b9b5') no-repeat center center/cover;
+      color: white;
+      text-align: center;
+      padding: 100px 20px;
+    }
+
+    .hero h2 { font-size: 36px; }
+
+    .centered-section {
+      display: flex;
+      justify-content: center;
+      padding: 40px 20px 0 20px;
+    }
+
+    .sections {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      padding: 40px;
+      justify-content: center;
+    }
+
+    .card {
+      background: white;
+      width: 280px;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 6px 10px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card h3 {
+      margin-bottom: 10px;
+      color: #004d40;
+    }
+
+    .card p {
+      font-size: 14px;
+      color: #555;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #004d40;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Global Warming Data</h1>
+  <nav>
+    <a href="https://www.britannica.com/science/global-warming">Overview</a>
+    <a href="https://www.climate.gov/news-features/understanding-climate/climate-change-global-temperature">Climate Trends</a>
+    <a href="https://ourworldindata.org/data">Renewable Energy Data</a>
+    <a href="https://weather.com/science/environment/news/2021-04-16-earth-day-climate-trends-data-global-warming">Recent Trends</a>
+  </nav>
+</header>
+
+<!-- Centered Climate Evolution Card -->
+<div class="centered-section">
+  <div class="card" id="climate-evolution">
+    <a href="https://www.activesustainability.com/climate-change/evolution-climate-change/" target="_blank" style="text-decoration: none; color: black;">
+      <h3>Tracking Earth's Climate Evolution</h3>
+      <p>Real-time insights on global warming, climate change, and energy transition.</p>
+    </a>
+  </div>
+</div>
+
+<!-- Main Sections -->
+<section class="sections">
+
+  <div class="card" id="overview">
+    <a href="https://climateknowledgeportal.worldbank.org/overviewcountry/" target="_blank" style="text-decoration: none; color: inherit;">
+      <h3>Climate Overview</h3>
+      <p>General summary of rising temperatures, CO₂ levels, and ocean warming.</p>
+    </a>
+  </div>
+
+  <a href="https://www.climate.gov/news-features/understanding-climate/climate-change-global-temperature" target="_blank" style="text-decoration: none;">
+    <div class="card" id="trends">
+      <h3>Climate Data Trends</h3>
+      <p>Interactive charts showing temperature anomalies, sea-level rise, and ice melt data.</p>
+    </div>
+  </a>
+
+  <div class="card" id="energy">
+    <a href="https://www.statista.com/statistics/267233/renewable-energy-capacity-worldwide-by-country/" target="_blank" style="text-decoration: none; color: inherit;">
+      <h3>Renewable Energy Generation</h3>
+      <p>Explore how solar, wind, and hydro power are replacing fossil fuels globally.</p>
+    </a>
+  </div>
+
+  <div class="card" id="recent">
+    <a href="https://www.sciencedirect.com/science/article/abs/pii/S0921818111000324" target="_blank" style="text-decoration: none; color: inherit;">
+      <h3>Recent Global Warming Trends</h3>
+      <p>Latest news, scientific reports, and satellite visualizations from around the world.</p>
+    </a>
+  </div>
+
+  <div class="card" id="about">
+    <a href="about_us.html" target="_blank" style="text-decoration: none; color: inherit;">
+      <h3>About Us</h3>
+      <p>Learn about the mission, vision, and team behind global climate initiatives.</p>
+    </a>
+  </div>
+
+  <div class="card" id="research">
+    <a href="researchpaper.html" target="_blank" style="text-decoration: none; color: inherit;">
+      <h3>Research Papers</h3>
+      <p>Access peer-reviewed articles and cutting-edge scientific climate research.</p>
+    </a>
+  </div>
+
+  <div class="card" id="resources">
+    <a href="climate_data_trends.html" target="_blank" style="text-decoration: none; color: inherit;">
+      <h3>Data Resources</h3>
+      <p>Find reliable datasets and tools from UN, NASA, and global climate organizations.</p>
+    </a>
+  </div>
+
+  <div class="card" id="expert">
+    <a href="https://climate.nasa.gov/earth-now/" target="_blank" style="text-decoration: none; color: inherit;">
+      <h3>Global map </h3>
+      <p>Insights and opinions from global satelite imaging analysis.</p>
+    </a>
+  </div>
+
+</section>
+
+<footer>
+  &copy; 2025 Global Warming Data. All rights reserved.
+</footer>
+
+<script>
+  // Example dynamic backend call (simulated)
+  document.addEventListener("DOMContentLoaded", () => {
+    fetch("https://api.mocki.io/v2/549a5d8b/ClimateData") // Simulated backend API
+      .then(response => response.json())
+      .then(data => console.log("Climate Data Loaded:", data))
+      .catch(error => console.error("API Error:", error));
+  });
+</script>
+
+</body>
+</html>

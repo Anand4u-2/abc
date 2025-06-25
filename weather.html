@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>WeatherWise Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Outfit', sans-serif;
+      background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80') no-repeat center center fixed;
+      background-size: cover;
+      color: white;
+    }
+
+    .dashboard {
+      display: flex;
+      flex-wrap: wrap;
+      padding: 30px;
+      background-color: rgba(0,0,0,0.6);
+      border-radius: 20px;
+      margin: 20px;
+    }
+
+    .sidebar {
+      flex: 1;
+      max-width: 350px;
+      margin-right: 20px;
+    }
+
+    .main {
+      flex: 2;
+    }
+
+    .status-card {
+      background: rgba(255,255,255,0.1);
+      padding: 20px;
+      border-radius: 12px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    .status-card h3 {
+      margin-bottom: 10px;
+      font-size: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    iframe {
+      width: 100%;
+      height: 200px;
+      border: none;
+      border-radius: 10px;
+    }
+
+    .news-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #233444;
+      color: white;
+      padding: 10px;
+      border-radius: 10px;
+      margin-bottom: 8px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+
+    .news-link:hover {
+      background: #2d4766;
+      transform: scale(1.05);
+    }
+
+    .news-icon {
+      font-size: 24px;
+      color: #00c6fb;
+      margin-right: 10px;
+    }
+
+    input, button {
+      font-family: 'Outfit', sans-serif;
+    }
+  </style>
+</head>
+<body>
+  <div class="dashboard">
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <div class="status-card">
+        <h3><i class="fas fa-map-marker-alt"></i> Location</h3>
+        <p>New York, US</p>
+        <p>28°C – Overcast Clouds</p>
+      </div>
+
+      <!-- YouTube Live News Embed -->
+      <div class="status-card">
+        <h3><i class="fas fa-tv"></i> Live News</h3>
+        <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:12px;">
+          <iframe 
+            src="https://www.youtube.com/embed/live_stream?channel=UC16niRr50-MSBwiO3YDb3RA&autoplay=1&mute=1" 
+            allow="autoplay; encrypted-media" 
+            allowfullscreen 
+            style="position:absolute;top:0;left:0;width:100%;height:100%;">
+          </iframe>
+        </div>
+      </div>
+
+      <!-- Weather Updates -->
+      <div class="status-card">
+        <h3><i class="fas fa-cloud-sun-rain news-icon"></i> Weather Updates</h3>
+        <a href="https://www.accuweather.com/" target="_blank" class="news-link">
+          <i class="fas fa-external-link-alt"></i> AccuWeather
+        </a>
+        <a href="https://weather.com/" target="_blank" class="news-link">
+          <i class="fas fa-external-link-alt"></i> The Weather Channel
+        </a>
+      </div>
+
+      <!-- Global News -->
+      <div class="status-card">
+        <h3><i class="fas fa-globe-americas news-icon"></i> Global News</h3>
+        <a href="https://www.bbc.com/weather" target="_blank" class="news-link">
+          <i class="fas fa-external-link-alt"></i> BBC Weather
+        </a>
+        <a href="https://www.noaa.gov/" target="_blank" class="news-link">
+          <i class="fas fa-external-link-alt"></i> NOAA
+        </a>
+      </div>
+
+      <!-- Satellite View -->
+      <div class="status-card">
+        <h3><i class="fas fa-satellite news-icon"></i> Satellite View</h3>
+        <a href="https://zoom.earth/maps/satellite/" target="_blank" class="news-link">
+          <i class="fas fa-external-link-alt"></i> Live Satellite
+        </a>
+        <a href="https://www.windy.com/" target="_blank" class="news-link">
+          <i class="fas fa-external-link-alt"></i> Windy Maps
+        </a>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main">
+      <div class="status-card">
+        <h3><i class="fas fa-sun"></i> Today’s Forecast</h3>
+        <p>High: 30°C | Low: 18°C</p>
+        <p>Wind: 15 km/h | Humidity: 65%</p>
+      </div>
+
+      <div class="status-card">
+        <h3><i class="fas fa-calendar-week"></i> This Week</h3>
+        <p>Mon: ☁️ 27°C | Tue: 🌧️ 24°C | Wed: ☀️ 29°C</p>
+      </div>
+
+      <!-- LIVE WEATHER SEARCH START -->
+      <div class="status-card">
+        <h3><i class="fas fa-search-location"></i> Live Weather Search</h3>
+        <input id="location-input" type="text" placeholder="Enter city or village" style="padding: 10px; width: 90%; margin-bottom: 10px; border-radius: 6px;">
+        <button onclick="searchWeather()" style="padding: 10px 20px; border: none; background: #00c6fb; color: white; border-radius: 5px;">Search</button>
+        <div id="weather-result" style="margin-top: 15px;"></div>
+        <div id="map" style="height: 300px; margin-top: 15px; border-radius: 10px;"></div>
+      </div>
+      <!-- LIVE WEATHER SEARCH END -->
+
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script>
+    let map;
+
+    async function searchWeather() {
+      const city = document.getElementById("location-input").value;
+      const resultDiv = document.getElementById("weather-result");
+
+      const geoRes = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(city)}`);
+      const geoData = await geoRes.json();
+
+      if (!geoData.length) {
+        resultDiv.innerText = "❌ Location not found!";
+        return;
+      }
+
+      const lat = geoData[0].lat;
+      const lon = geoData[0].lon;
+
+      const weatherURL = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,precipitation,windspeed_10m&timezone=auto`;
+      const weatherRes = await fetch(weatherURL);
+      const weatherData = await weatherRes.json();
+      const current = weatherData.current;
+
+      resultDiv.innerHTML = `
+        <strong>${geoData[0].display_name}</strong><br>
+        🌡️ Temp: ${current.temperature_2m}°C<br>
+        💧 Precipitation: ${current.precipitation} mm<br>
+        💨 Wind: ${current.windspeed_10m} km/h
+      `;
+
+      if (!map) {
+        map = L.map('map').setView([lat, lon], 10);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          attribution: '&copy; OpenStreetMap contributors'
+        }).addTo(map);
+      } else {
+        map.setView([lat, lon], 10);
+      }
+
+      L.marker([lat, lon]).addTo(map)
+        .bindPopup(`${geoData[0].display_name}<br>${current.temperature_2m}°C`)
+        .openPopup();
+    }
+  </script>
+</body>
+</html>

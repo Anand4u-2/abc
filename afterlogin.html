@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nature Welcome Page</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body, html {
+      height: 100%;
+      font-family: 'Segoe UI', sans-serif;
+      overflow: auto;
+      background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80') no-repeat center center fixed;
+      background-size: cover;
+    }
+
+    #bgVideo {
+      position: fixed;
+      top: 0;
+      left: 0;
+      min-width: 100%;
+      min-height: 100%;
+      object-fit: cover;
+      z-index: -1;
+      filter: brightness(0.4) saturate(1.2);
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .options-container {
+      display: flex;
+      gap: 30px;
+      flex-wrap: wrap;
+      justify-content: center;
+      max-width: 1200px;
+    }
+
+    .option-box {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 40px;
+      width: 300px;
+      text-align: center;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .option-box:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .option-box h2 {
+      color: #fff;
+      font-size: 24px;
+      margin-bottom: 20px;
+      font-weight: 500;
+    }
+
+    .option-box p {
+      color: rgba(255, 255, 255, 0.7);
+      margin-bottom: 25px;
+      line-height: 1.6;
+    }
+
+    .option-box button {
+      width: 100%;
+      padding: 15px 30px;
+      border: none;
+      border-radius: 12px;
+      background: linear-gradient(45deg, #00c6fb, #005bea);
+      color: white;
+      font-size: 16px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0, 198, 251, 0.3);
+    }
+
+    .option-box button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 20px rgba(0, 198, 251, 0.4);
+    }
+
+    .option-icon {
+      font-size: 40px;
+      margin-bottom: 20px;
+      color: #00c6fb;
+    }
+
+    @media (max-width: 768px) {
+      .options-container {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .option-box {
+        width: 100%;
+        max-width: 300px;
+      }
+    }
+
+    .bg-overlay {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(20, 30, 40, 0.65);
+      z-index: 0;
+      pointer-events: none;
+    }
+    .dashboard-header {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      margin-top: 40px;
+      margin-bottom: 30px;
+    }
+    .dashboard-title {
+      font-size: 2.7rem;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: 1px;
+      margin-bottom: 10px;
+      text-shadow: 0 4px 24px rgba(0,0,0,0.25);
+      animation: fadeInDown 1s cubic-bezier(.77,0,.18,1) both;
+    }
+    .dashboard-title i {
+      color: #00eaff;
+      margin-right: 12px;
+      animation: pulse 2s infinite;
+    }
+    .dashboard-subtitle {
+      color: #cce6ff;
+      font-size: 1.2rem;
+      margin-bottom: 0;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.12);
+    }
+    @keyframes fadeInDown {
+      0% { opacity: 0; transform: translateY(-40px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes pulse {
+      0%, 100% { filter: brightness(1); }
+      50% { filter: brightness(2); }
+    }
+    .insights-section {
+      margin: 50px auto 0 auto;
+      max-width: 700px;
+      text-align: center;
+      z-index: 2;
+      position: relative;
+    }
+    .insights-title {
+      color: #fff;
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 18px;
+      letter-spacing: 0.5px;
+    }
+    .insights-title i {
+      color: #00eaff;
+      margin-right: 8px;
+    }
+    .insights-cards {
+      display: flex;
+      justify-content: center;
+      gap: 28px;
+      margin-top: 10px;
+    }
+    .insight-card {
+      background: rgba(0, 198, 251, 0.13);
+      border-radius: 16px;
+      padding: 28px 32px;
+      min-width: 120px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.13);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .insight-card:hover {
+      transform: translateY(-6px) scale(1.04);
+      box-shadow: 0 8px 32px rgba(0,198,251,0.18);
+    }
+    .insight-value {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #00eaff;
+      margin-bottom: 8px;
+    }
+    .insight-label {
+      font-size: 1rem;
+      color: #fff;
+      opacity: 0.85;
+    }
+    .dashboard-footer {
+      position: fixed;
+      left: 0; right: 0; bottom: 0;
+      background: rgba(20,30,40,0.85);
+      color: #cce6ff;
+      text-align: center;
+      padding: 14px 0 10px 0;
+      font-size: 1rem;
+      letter-spacing: 0.5px;
+      z-index: 10;
+      box-shadow: 0 -2px 12px rgba(0,0,0,0.13);
+    }
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+  <div class="bg-overlay"></div>
+  <div class="dashboard-header">
+    <h1 class="dashboard-title"><i class="fas fa-globe-americas"></i> Earth's Vital Signs</h1>
+    <p class="dashboard-subtitle">Explore real-time global climate insights, planetary trends, and weather intelligence</p>
+  </div>
+  <div class="container">
+    <div class="options-container">
+      <div class="option-box">
+        <i class="fas fa-chart-line option-icon"></i>
+        <h2>Climate Dashboard</h2>
+        <p>Access real-time climate data, trends, and environmental impact analysis</p>
+        <button onclick="window.location.href='vedika.html'">View Dashboard</button>
+      </div>
+      <div class="option-box">
+        <i class="fas fa-satellite option-icon"></i>
+        <h2>Solar System View</h2>
+        <p>Explore live solar system visualization and planetary positions</p>
+        <button onclick="window.location.href='sattelite.html'">View Solar System</button>
+      </div>
+      <div class="option-box">
+        <i class="fas fa-cloud-sun option-icon"></i>
+        <h2>Weather Dashboard</h2>
+        <p>Check real-time weather updates and forecasts for your location</p>
+        <button onclick="window.location.href='weather.html'">View Weather</button>
+      </div>
+    </div>
+    <div class="insights-section">
+      <h3 class="insights-title"><i class="fas fa-bolt"></i> Latest Insights</h3>
+      <div class="insights-cards">
+        <div class="insight-card">
+          <div class="insight-value">+1.2°C</div>
+          <div class="insight-label">Global Temp Rise</div>
+        </div>
+        <div class="insight-card">
+          <div class="insight-value">420 ppm</div>
+          <div class="insight-label">CO₂ Concentration</div>
+        </div>
+        <div class="insight-card">
+          <div class="insight-value">3.4 mm</div>
+          <div class="insight-label">Sea Level Rise</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer class="dashboard-footer">
+    Powered by <b>ClimateWatch</b> &mdash; Real-time Data for a Changing Planet
+  </footer>
+</body>
+</html>

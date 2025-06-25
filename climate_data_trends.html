@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Climate Data Trends</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    /* Background tropical forest */
+    body {
+      background: url('https://images.unsplash.com/photo-1502082553048-f009c37129b9') no-repeat center center/cover;
+      position: relative;
+    }
+
+    /* Content */
+    .content {
+      position: relative;
+      z-index: 4;
+      text-align: center;
+      color: white;
+      padding: 60px 20px;
+    }
+
+    .content h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 5px #000;
+    }
+
+    .link-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 30px;
+    }
+
+    .link-buttons a {
+      text-decoration: none;
+      background: rgba(0, 100, 80, 0.7);
+      color: white;
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    .link-buttons a:hover {
+      background: rgba(0, 140, 100, 0.9);
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+  </style>
+</head>
+<body>
+  <!-- Content -->
+  <div class="content">
+    <a href="file:///C:/Users/mendh/Desktop/project/global/climate_data_trends.html" style="text-decoration: none; color: inherit;">
+      <h1>Climate Data Trends</h1>
+    </a>
+
+    <div class="link-buttons">
+      <a href="https://climate.nasa.gov" target="_blank">NASA Climate</a>
+      <a href="https://www.climate.gov" target="_blank">NOAA Climate</a>
+      <a href="https://berkeleyearth.org" target="_blank">Berkeley Earth</a>
+      <a href="https://ourworldindata.org/co2-and-other-greenhouse-gas-emissions" target="_blank">Our World in Data</a>
+      <a href="https://cds.climate.copernicus.eu" target="_blank">Copernicus CDS</a>
+      <a href="file:///C:/Users/mendh/Desktop/project/global/climate_data_trends.html">Local Climate Data</a>
+    </div>
+  </div>
+</body>
+</html>
